@@ -6,11 +6,12 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 13:03:10 by root              #+#    #+#             */
-/*   Updated: 2025/03/21 13:04:29 by root             ###   ########.fr       */
+/*   Updated: 2025/03/28 17:21:40 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
 {
@@ -70,7 +71,14 @@ int Form::getGradeToExecute() const
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() > _gradeToSign)
+    {
         throw Form::GradeTooLowException();
+        std::cout << bureaucrat.getName() <<
+            " cannot sign " << _name << " because their grade is too low." << std::endl;
+        return ;
+    }
+    std::cout << bureaucrat.getName() <<
+        " signed " << _name << std::endl;
     _signed = true;
 }
 

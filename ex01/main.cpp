@@ -5,63 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 19:39:44 by root              #+#    #+#             */
-/*   Updated: 2025/03/21 13:09:29 by root             ###   ########.fr       */
+/*   Created: 2022/09/30 13:07:50 by aperez-b          #+#    #+#             */
+/*   Updated: 2025/03/25 18:30:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-int main()
+int main(void)
 {
-    Bureaucrat *bureaucrat = new Bureaucrat("John", 150);
-    Form       *form = new Form("Some Form", 50, 100);
+	/* Create a form with grade too high */
+	{
+		try
+		{
+			Form form0("A99", 0, 5);
+			std::cout << form0 << std::endl;
+		}
+		catch(std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		
+	}
 
-    std::cout << "START: " << *bureaucrat << std::endl;
+	std::cout << "\n --------------------- \n\n";
 
-    try
-    {
-        form->beSigned(*bureaucrat);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
-    
-    std::cout << "AFTER SIGNING: " <<
-        " Bureaucrat: " << *bureaucrat << std::endl <<
-        " Form: " << *form << std::endl;
-    try
-    {
-        bureaucrat->incrementGrade();
-        form->beSigned(*bureaucrat);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
-    std::cout << "AFTER SIGNING: " <<
-        " Bureaucrat: " << *bureaucrat << std::endl <<
-        " Form: " << *form << std::endl;
-    
-    delete bureaucrat;
-    Bureaucrat  *bureaucrat2 = new Bureaucrat("John Wick", 4);
-    try 
-    {
-        bureaucrat2->incrementGrade();
-        form->beSigned(*bureaucrat2);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
-    std::cout << "AFTER SIGNING: " <<
-        " Bureaucrat: " << *bureaucrat2 << std::endl <<
-        " Form: " << *form << std::endl;
+	/* Create form and sign it without exceptions */
+	{
+		try
+		{
+			Bureaucrat mike("Mike", 15);
+			Form form("B58", 20, 45);
+			std::cout << mike << std::endl;
+			std::cout << form << std::endl;
+			mike.signForm(form);
+			std::cout << form << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	
+	std::cout << "\n --------------------- \n\n";
 
-    delete bureaucrat2;
-    delete form;
-
-    return 0;
+	/* Create form and try to sign it but the grade is not enough */
+	{
+		try
+		{
+			Bureaucrat jon("Jon", 35);
+			Form form2("C_303", 20, 45);
+			std::cout << jon << std::endl;
+			std::cout << form2 << std::endl;
+			jon.signForm(form2);
+			std::cout << form2 << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	return (0);
 }

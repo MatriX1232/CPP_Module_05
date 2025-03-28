@@ -6,16 +6,19 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:57:19 by root              #+#    #+#             */
-/*   Updated: 2025/03/20 12:14:28 by root             ###   ########.fr       */
+/*   Updated: 2025/03/25 18:34:37 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
 #include <iostream>
 #include <string>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:07:50 by aperez-b          #+#    #+#             */
-/*   Updated: 2025/03/25 18:30:02 by root             ###   ########.fr       */
+/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 	{
 		try
 		{
-			Form form0("A99", 0, 5);
+			AForm form0("A99", 0, 5);
 			std::cout << form0 << std::endl;
 		}
 		catch(std::exception &e)
@@ -36,7 +36,7 @@ int main(void)
 		try
 		{
 			Bureaucrat mike("Mike", 15);
-			Form form("B58", 20, 45);
+			AForm form("B58", 20, 45);
 			std::cout << mike << std::endl;
 			std::cout << form << std::endl;
 			mike.signForm(form);
@@ -55,7 +55,7 @@ int main(void)
 		try
 		{
 			Bureaucrat jon("Jon", 35);
-			Form form2("C_303", 20, 45);
+			AForm form2("C_303", 20, 45);
 			std::cout << jon << std::endl;
 			std::cout << form2 << std::endl;
 			jon.signForm(form2);

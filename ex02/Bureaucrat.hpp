@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:28:24 by root              #+#    #+#             */
-/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
+/*   Updated: 2025/05/07 20:48:55 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ class Bureaucrat
     public:
         Bureaucrat();
         Bureaucrat(std::string name, int grade);
-        Bureaucrat(Bureaucrat const & src);
+        Bureaucrat(Bureaucrat const &src);
         ~Bureaucrat();
-        Bureaucrat &operator=(Bureaucrat const & src);
+        Bureaucrat &operator=(Bureaucrat const &src);
         friend std::ostream&	operator<<(std::ostream& os, Bureaucrat const &bureaucrat);
 
         std::string getName() const;
         int getGrade() const;
+
+        void executeForm(AForm const &form) const;
 
         void incrementGrade();
         void decrementGrade();

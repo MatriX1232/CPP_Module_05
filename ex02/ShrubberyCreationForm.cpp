@@ -5,53 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 13:59:12 by root              #+#    #+#             */
-/*   Updated: 2025/05/07 21:03:22 by root             ###   ########.fr       */
+/*   Created: 2022/09/29 18:13:44 by aperez-b          #+#    #+#             */
+/*   Updated: 2025/05/07 21:51:31 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137), _target("default")
+/* Constructors & Destructors */
+ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("ShrubberyCreationForm", 145, 137), _target("null") {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target): AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy): AForm(copy), _target(copy._target) {}
+
+ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
+
+/* Basic Operators */
+ShrubberyCreationForm const	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy)
 {
+	AForm::operator=(copy);
+	this->_target = copy._target;
+	return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+/* Main Member Functions */
+void	ShrubberyCreationForm::beExecuted(const Bureaucrat &bureaucrat) const
 {
+	std::ofstream	outfile;
+	
+	outfile.open((this->_target + "_shrubbery").c_str());
+	if (outfile.fail())
+	{
+		std::cout << "Could not open output file" << std::endl;
+		return ;
+	}
+	outfile << TREE;
+	outfile.close();
+	std::cout << bureaucrat.getName() << " successfully created a shrubbery" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src) : AForm(src), _target(src._target)
+std::ostream	&operator<<(std::ostream &str, ShrubberyCreationForm const &form)
 {
+	return (str << form.getName() << " form, signed: " << form.getIsSigned() << ", sign grade: " << form.getSignGrade() << ", exec grade: " << form.getExecGrade());
 }
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-}
-
-ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const &copy)
-{
-    if (this != &copy)
-    {
-        AForm::operator=(copy);
-        _target = copy._target;
-    }
-    return *this;
-}
-
-void ShrubberyCreationForm::beExecuted(Bureaucrat const &executor) const
-{
-    (void)executor;
-    std::ofstream file((_target + "_shrubbery").c_str());
-    if (!file)
-        throw std::ios_base::failure("Failed to open file");
-    
-    file << "       _-_" << std::endl;
-    file << "    /\\   /\\" << std::endl;
-    file << "   ( o )( o )" << std::endl;
-    file << "  /  ==   ==  \\" << std::endl;
-    file << " /____________\\ " << std::endl;
-    file << " ~~~~~~~~~~~~~~~" << std::endl;
-    file.close();
-}
-

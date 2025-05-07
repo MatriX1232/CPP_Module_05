@@ -5,29 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 14:05:46 by root              #+#    #+#             */
-/*   Updated: 2025/05/07 21:03:25 by root             ###   ########.fr       */
+/*   Created: 2022/09/29 18:14:22 by aperez-b          #+#    #+#             */
+/*   Updated: 2025/05/07 21:51:31 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
-#include <string>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#pragma once
 
-class RobotomyRequestForm : public AForm
+#include <cstdlib>
+#include "AForm.hpp"
+
+class Bureaucrat;
+
+class RobotomyRequestForm: public AForm
 {
-    public:
-        RobotomyRequestForm(std::string target);
-        RobotomyRequestForm(RobotomyRequestForm const &src);
-        ~RobotomyRequestForm();
-    
-        RobotomyRequestForm &operator=(RobotomyRequestForm const &src);
-    
-        // Renamed method to override AForm::beExecuted
-        void beExecuted(Bureaucrat const &executor) const;
-    
-    private:
-        std::string _target;
+	private:
+		std::string	_target;
+	public:
+		/* Constructors & Destructors */
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string const &target);
+		RobotomyRequestForm(RobotomyRequestForm const &copy);
+		~RobotomyRequestForm(void);
+
+		/* Basic Operators */
+		RobotomyRequestForm const	&operator=(RobotomyRequestForm const &copy);
+
+		/* Main Member Functions */
+		void	beExecuted(Bureaucrat const &bureaucrat) const;
 };
+
+std::ostream	&operator<<(std::ostream &str, RobotomyRequestForm const &form);

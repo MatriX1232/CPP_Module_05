@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:07:58 by aperez-b          #+#    #+#             */
-/*   Updated: 2025/05/07 21:03:41 by root             ###   ########.fr       */
+/*   Updated: 2025/05/07 21:55:53 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main(void)
 	ShrubberyCreationForm shrubbery("Home");
 	RobotomyRequestForm robotomy("Morty");
 	PresidentialPardonForm pardon("Rick Sanchez");
-	Bureaucrat mike("Mike", 137);
-	Bureaucrat jon("Jon", 45);
-	Bureaucrat steve("Steve", 5);
+	Bureaucrat mike("Mike", 150);
+	Bureaucrat jon("Jon", 120);
+	Bureaucrat steve("Steve", 3);
 	
 	/* Try to execute forms without being signed */
 	{

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:37:22 by root              #+#    #+#             */
-/*   Updated: 2025/05/07 20:56:43 by root             ###   ########.fr       */
+/*   Updated: 2025/05/07 21:55:43 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,16 @@ void Bureaucrat::executeForm(AForm const &form) const
 
 void Bureaucrat::incrementGrade()
 {
-    if (_grade - 1 < 1)
+    if (this->_grade - 1 < 1)
         throw Bureaucrat::GradeTooHighException();
-    _grade--;
+    this->_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-    if (_grade + 1 > 150)
+    if (this->_grade + 1 > 150)
         throw Bureaucrat::GradeTooLowException();
-    _grade++;
+    this->_grade++;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()

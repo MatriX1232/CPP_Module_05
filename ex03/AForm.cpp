@@ -12,6 +12,7 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include <ctime>
 
 /* Constructors & Destructors */
 AForm::AForm(void): _name("default"), _isSigned(0), _signGrade(30), _execGrade(60) {}
@@ -79,7 +80,6 @@ void	AForm::execute(Bureaucrat const &executor) const
 {
 	if (!this->_isSigned)
 		throw (AForm::FormNotSignedException());
-	/* fixed: should compare executor grade with exec grade, not sign grade */
 	else if (executor.getGrade() > this->_execGrade)
 		throw (AForm::GradeTooLowException());
 	else

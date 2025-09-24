@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:57:19 by root              #+#    #+#             */
-/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
+/*   Updated: 2025/09/24 10:56:26 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ class AForm
         AForm(AForm const & src);
         ~AForm();
         AForm &operator=(AForm const & src);
-        friend std::ostream&	operator<<(std::ostream& os, AForm const &form);
-
+        
         std::string getName() const;
         bool getSigned() const;
         int getGradeToSign() const;
@@ -48,12 +47,13 @@ class AForm
             public:
                 virtual const char* what() const throw();
         };
-
+        
         class GradeTooLowException : public std::exception
         {
             public:
-                virtual const char* what() const throw();
+            virtual const char* what() const throw();
         };
-};
-
+    };
+    
+std::ostream&	operator<<(std::ostream& os, AForm const &form);
 #endif

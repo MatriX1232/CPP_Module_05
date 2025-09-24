@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:28:24 by root              #+#    #+#             */
-/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
+/*   Updated: 2025/09/24 10:56:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const & src);
         ~Bureaucrat();
         Bureaucrat &operator=(Bureaucrat const & src);
-        friend std::ostream&	operator<<(std::ostream& os, Bureaucrat const &bureaucrat);
-
+        
         std::string getName() const;
         int getGrade() const;
 
@@ -53,5 +52,6 @@ class Bureaucrat
                 virtual const char* what() const throw();
         };
 };
+std::ostream&	operator<<(std::ostream& os, Bureaucrat const &bureaucrat);
 
 #endif

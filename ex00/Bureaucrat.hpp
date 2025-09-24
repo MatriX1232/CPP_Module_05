@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:28:24 by root              #+#    #+#             */
-/*   Updated: 2025/03/15 19:42:13 by root             ###   ########.fr       */
+/*   Updated: 2025/09/24 10:55:17 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const & src);
         ~Bureaucrat();
         Bureaucrat &operator=(Bureaucrat const & src);
-        friend std::ostream&	operator<<(std::ostream& os, Bureaucrat const &bureaucrat);
-
+        
         std::string getName() const;
         int getGrade() const;
 
@@ -41,12 +40,13 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw();
         };
-
+        
         class GradeTooLowException : public std::exception
         {
             public:
-                virtual const char* what() const throw();
+            virtual const char* what() const throw();
         };
 };
-
+    
+std::ostream&	operator<<(std::ostream& os, Bureaucrat const &bureaucrat);
 #endif

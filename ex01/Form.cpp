@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 13:03:10 by root              #+#    #+#             */
-/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
+/*   Updated: 2025/09/24 13:36:49 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
     if (bureaucrat.getGrade() > _gradeToSign)
     {
         throw AForm::GradeTooLowException();
-        std::cout << bureaucrat.getName() <<
-            " cannot sign " << _name << " because their grade is too low." << std::endl;
+        // std::cout << bureaucrat.getName() <<
+        //     " cannot sign " << _name << " because their grade is too low." << std::endl;
         return ;
     }
-    std::cout << bureaucrat.getName() <<
-        " signed " << _name << std::endl;
+    // std::cout << bureaucrat.getName() <<
+        // " signed " << _name << std::endl;
     _signed = true;
 }
 

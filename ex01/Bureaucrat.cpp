@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:37:22 by root              #+#    #+#             */
-/*   Updated: 2025/03/28 23:21:00 by root             ###   ########.fr       */
+/*   Updated: 2025/09/24 13:37:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void Bureaucrat::signForm(AForm &form)
     try
     {
         form.beSigned(*this);
-        std::cout << this->getName() << " signs " << form.getName() << std::endl; 
+        std::cout << this->getName() << " signed " << form.getName() << std::endl; 
     }
     catch(const std::exception& e)
     {
